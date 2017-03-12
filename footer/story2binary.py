@@ -9,8 +9,8 @@ binarystrings = ["{0:0>7}".format(int(str(bin(ord(char)))[2:] )) for char in tex
 
 def applygradient(text, left):
 	t = ""
-	start = 60 if left else 20
-	end   = 20 if left else 60
+	start = 80 if left else 20
+	end   = 20 if left else 80
 	for (i, c) in enumerate(text):
 		pc = i / len(text)
 		value = start + (end - start) * pc
