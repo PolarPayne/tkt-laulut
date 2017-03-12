@@ -36,7 +36,6 @@ def line_hack(line, is_line=True):
     line = line.replace("|", "\\|")
     line = line.replace("@", "\\@")
     line = line.replace("$", "\\$")
-    line = line.replace("\\", "\\textbackslash{}")
     line = line.replace("€", "\\euro{}")
     line = line.replace("+", "\\texttt{+}")
     line = line.replace(";,;", ":,:")
