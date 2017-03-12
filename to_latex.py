@@ -15,6 +15,7 @@ SONGTITLE_POST_SKIP = "\\[6pt]"
 VERSE_SKIP = "10pt"
 PURKKA_INDENT = "10pt"
 
+index_blacklist = [line.strip() for line in open("index_blacklist.txt", "r")]
 
 def index_hack(name):
     """Hack indexing to work with åäö."""
@@ -95,7 +96,8 @@ def generate_song(data):
 
     # add index entry for title and any alternate titles
     for name in [title] + data["alternate_titles"]:
-    	out.append("\\index{{{}}}".format(index_hack(name)))
+        if not name in index_blacklist:
+           out.append("\\index{{{}}}".format(index_hack(name)))
 
     first = True
 
