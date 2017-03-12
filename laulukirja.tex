@@ -17,6 +17,14 @@
 \usepackage{wasysym} % note character
 \usepackage{graphicx}
 
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+
 % fix index indent on linewrap
 % set raggedright in index
 \usepackage[justific=raggedright,indentunit=0.1cm,columnsep=0.3cm]{idxlayout}
