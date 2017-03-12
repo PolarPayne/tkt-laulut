@@ -4,7 +4,7 @@ all: laulukirja.pdf
 clean:
 	git clean -fx
 
-laulukirja.pdf: bits laulukirja.tex laulut.tex
+laulukirja.pdf: clean bits laulukirja.tex laulut.tex
 	pdflatex laulukirja.tex && \
 	pdflatex laulukirja.tex && \
 	pdflatex laulukirja.tex
