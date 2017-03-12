@@ -1,4 +1,4 @@
-preamble "\n\\begin{theindex}\n\n\\fancyhead[LE,RO]{\\indexname}"
+preamble "\n\\begin{theindex}\n\n\\fancyhead[LE,RO]{Hakemisto}"
 
 delim_0 "\\penalty0\\hbox{}\\nobreak\\dotfill"
 delim_1 "\\penalty0\\hbox{}\\nobreak\\dotfill"
