@@ -124,7 +124,7 @@ def generate_song(data):
 
 
 def category_break():
-    return "\input{chapterbreak.tex}"
+    return "\input{category_break.tex}"
 
 
 def main(order_file, songs_file):
