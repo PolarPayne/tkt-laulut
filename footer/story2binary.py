@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
-chars_per_page = 7;
+chars_per_page = 7
 
-lines = [line for line in open("story", 'r')]
+lines = [line for line in open("story.txt", 'r')]
 text = " ".join(lines)
 
 binarystrings = ["{0:0>7}".format(int(str(bin(ord(char)))[2:] )) for char in text]
