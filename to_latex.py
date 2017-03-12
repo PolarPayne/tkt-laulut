@@ -141,7 +141,6 @@ def main(order_file, songs_file):
                 for i in csv.reader(StringIO(row[4])):
                     for j in i:
                         alts.append(j)
-                print(alts)
             else:
                 alts = []
 
