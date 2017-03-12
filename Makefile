@@ -4,12 +4,12 @@ all: laulukirja.pdf
 clean:
 	git clean -fx
 
-laulukirja.pdf: laulukirja.tex laulut.tex
+laulukirja.pdf: bits laulukirja.tex laulut.tex
 	pdflatex laulukirja.tex && \
 	pdflatex laulukirja.tex && \
 	pdflatex laulukirja.tex
 
-laulut.tex: to_latex.py ordering.csv lyrics.csv
+laulut.tex: to_latex.py ordering.csv lyrics.csv 
 	python3 to_latex.py ordering.csv lyrics.csv > laulut.tex
 
 .PHONY: ordering.csv
@@ -23,3 +23,7 @@ lyrics.csv:
 	curl "https://docs.google.com/spreadsheets/d/\
 	1D0C7BTZ5212Xf6xvW4ijLj7wICh74baMRTxJCnrqivY/pub?gid=300077251&single=true&output=csv" \
 	> lyrics.csv
+
+.PHONY: bits
+bits:
+	cd footer && ./story2binary.py && touch binary.tex
