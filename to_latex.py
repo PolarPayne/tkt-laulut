@@ -123,6 +123,10 @@ def generate_song(data):
     return "\n".join(out)
 
 
+def category_break():
+    return "\input{category_break.tex}"
+
+
 def main(order_file, songs_file):
     order = OrderedDict()
 
@@ -137,6 +141,7 @@ def main(order_file, songs_file):
                 for i in csv.reader(StringIO(row[4])):
                     for j in i:
                         alts.append(j)
+                print(alts)
             else:
                 alts = []
 
@@ -149,7 +154,8 @@ def main(order_file, songs_file):
                 "title": row[3],
                 "melody": row[9],
                 "alts": alts,
-                "story": row[12]
+                "story": row[12],
+                "category": row[7]
             }
 
     lyrics = {}
@@ -178,18 +184,26 @@ def main(order_file, songs_file):
         count += 1
 
         title = d["title"]
-        melody = d["melody"] if len(d["melody"]) else None
+        melody = "(" + d["melody"] + ")" if len(d["melody"]) else None
 
         data.append({
             "title": d["title"],
             "alternate_titles": d["alts"],
             "number": number,
-            "melody": "(" + d["melody"] + ")" if len(d["melody"]) else None,
+            "melody": melody,
             "lyrics": lyrics[i],
-            "story": d["story"]
+            "story": d["story"],
+            "category": d["category"]
         })
 
+    cur_cat = data[0]["category"]
+    prev_cat = cur_cat
+
     for i in data:
+        prev_cat = cur_cat
+        cur_cat = i["category"]
+        if cur_cat != prev_cat:
+            print(category_break())
         print(generate_song(i))
 
 if __name__ == "__main__":

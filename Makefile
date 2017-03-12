@@ -12,9 +12,17 @@ laulukirja.pdf: bits laulukirja.tex laulut.tex
 laulut.tex: to_latex.py ordering.csv lyrics.csv 
 	python3 to_latex.py ordering.csv lyrics.csv > laulut.tex
 
-.PHONY: ordering.csv lyrics.csv
-ordering.csv lyrics.csv:
-	./get_songs.sh
+.PHONY: ordering.csv
+ordering.csv:
+	curl "https://docs.google.com/spreadsheets/d/\
+	1D0C7BTZ5212Xf6xvW4ijLj7wICh74baMRTxJCnrqivY/pub?gid=0&single=true&output=csv" \
+	> ordering.csv
+
+.PHONY: lyrics.csv
+lyrics.csv:
+	curl "https://docs.google.com/spreadsheets/d/\
+	1D0C7BTZ5212Xf6xvW4ijLj7wICh74baMRTxJCnrqivY/pub?gid=300077251&single=true&output=csv" \
+	> lyrics.csv
 
 .PHONY: bits
 bits:
