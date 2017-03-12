@@ -77,7 +77,7 @@ def generate_song(data):
     out.append(("\\sectionmark{{ {0}. }}%").format(index))
 
     # wrap title and first verse in the same minipage to prevent pagebreak between them
-    out.append("\\noindent\\hspace{{{0}}}\\begin{{minipage}}{{\\linewidth-{0}}}"
+    out.append("\\noindent\\strut\\hspace{{{0}}}\\begin{{minipage}}{{\\linewidth-{0}}}"
         .format(PURKKA_INDENT))
     out.append(SONGTITLE_PRE_SKIP)
 
@@ -102,7 +102,7 @@ def generate_song(data):
     for verse in lyrics:
         # start a new minipage if not the first verse
         if not first:
-            out.append("\n\\noindent\\hspace{{{0}}}\\begin{{minipage}}{{\\linewidth-{0}}}"
+            out.append("\\noindent\\strut\\hspace{{{0}}}\\begin{{minipage}}{{\\linewidth-{0}}}"
                 .format(PURKKA_INDENT))
         else:
             first = False
