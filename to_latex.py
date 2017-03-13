@@ -120,8 +120,8 @@ def generate_song(data):
 
     if (data["story"]):
         out.append(
-"""\\noindent\\strut\\hspace{{{2}}}
-\\begin{{minipage}}{{\\linewidth-{2}}}
+"""\\noindent\\strut\\hspace{{{1}}}
+\\begin{{minipage}}{{\\linewidth-{1}}}
 \\emph{{\\noindent {0} }}\\\\
 \\end{{minipage}}""".format(line_hack(data["story"]), PURKKA_INDENT))
 
