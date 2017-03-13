@@ -119,8 +119,11 @@ def generate_song(data):
         out.append("\\end{minipage}\\\\[" + VERSE_SKIP + "]")
 
     if (data["story"]):
-        out.append("\\emph{{ {0} }}\\\\[{1}]"
-          .format(line_hack(data["story"]), VERSE_SKIP))
+        out.append(
+"""\\noindent\\strut\\hspace{{{2}}}
+\\begin{{minipage}}{{\\linewidth-{2}}}
+\\emph{{\\noindent {0} }}\\\\
+\\end{{minipage}}""".format(line_hack(data["story"]), PURKKA_INDENT))
 
     return "\n".join(out)
 
