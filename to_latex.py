@@ -71,6 +71,10 @@ def generate_song(data):
     lyrics = data["lyrics"]
     index = line_hack(str(data["number"]), False)
 
+    # strip empty verses from song
+    while len(lyrics) > 1 and not lyrics[-1][0]:
+        lyrics = lyrics[:-1]
+
     out.append("%")
     out.append("% " + title)
     out.append("%")
@@ -129,7 +133,7 @@ def generate_song(data):
 
 
 def category_break():
-    return "\\input{category_break.tex}\n\\input{category_page.tex}\n\headerfooteron{}\n"
+    return "\\input{category_break.tex}\n\\input{category_page.tex}\n"
 
 
 def main(order_file, songs_file):
