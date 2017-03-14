@@ -74,10 +74,12 @@
 \pagenumbering{arabic}
 \setcounter{page}{0}
 \input{laulut.tex}
-% set header string
+
 \pagebreak
 
+% remove headers and footers for index
 \fancyhead[LE,RO]{{}}
+\fancyfoot[LE,RO]{{}}
 \pagenumbering{gobble}
 \printindex
 
