@@ -13,7 +13,10 @@
   keywordstyle=\color{black!60},       % keyword style
   %language=Octave,                 % the language of the code
   morekeywords={*,...},           % if you want to add more keywords to the set
-  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbers=left,
+  xleftmargin=1.5em,
+  framexleftmargin=1em,
   numbersep=5pt,                   % how far the line-numbers are from the code
   numberstyle=\footnotesize\color{black!60}, % the style that is used for the line-numbers
   rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text
@@ -58,8 +61,6 @@ dvec3 sample(dvec3& src, dvec3& dir) {
   } else if (is.light != dvec3(0,0,0)) {
     return is.light;
   } else if (is.mat == REFLECTIVE) {
-    return clamp(sample(intersect, r, d+1));
-  } else { // is.mat == REFRACTIVE
 \end{lstlisting}
 \clearpage
 \headerfooteron{}
