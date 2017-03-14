@@ -26,4 +26,4 @@ lyrics.csv:
 
 .PHONY: bits
 bits:
-	cd footer && ./story2binary.py && touch binary.tex
+	cd footer && ./story2binary.py

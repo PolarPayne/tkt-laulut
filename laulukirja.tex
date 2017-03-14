@@ -42,6 +42,15 @@
 \renewcommand{\headrulewidth}{0pt} % optional: removes header line
 \fancyhead[LE,RO]{\rightmark}
 
+% commands for turning headers on/off
+\newcommand{\headerfooteron}{%
+\fancyfoot[LE]{\small\thepage\ \footerbits{}}%
+\fancyfoot[RO]{\footerbits{}\ \small\thepage}}
+
+\newcommand{\headerfooteroff}{%
+\fancyfoot[LE]{{}}%
+\fancyfoot[RO]{{}}}
+
 % setup for footer bits
 \newcommand{\footerbits}[1]{\scriptsize \input{footer/binary\arabic{BitsCounter}}\stepcounter{BitsCounter}}
 
@@ -64,12 +73,12 @@
 \setcounter{BitsCounter}{0}
 \raggedbottom
 \footnotesize
+\headerfooteroff{}
 \pagenumbering{gobble}
 \input{first_pages.tex}
 
 % turn on fancy footers
-\fancyfoot[LE]{\small\thepage\ \footerbits{}}
-\fancyfoot[RO]{\footerbits{}\ \small\thepage}
+\headerfooteron{}
 % reset page numbering to 0
 \pagenumbering{arabic}
 \setcounter{page}{0}
@@ -78,8 +87,7 @@
 \pagebreak
 
 % remove headers and footers for index
-\fancyhead[LE,RO]{{}}
-\fancyfoot[LE,RO]{{}}
+\headerfooteroff{}
 \pagenumbering{gobble}
 \printindex
 
