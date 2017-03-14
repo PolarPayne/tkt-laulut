@@ -42,9 +42,8 @@
 \renewcommand{\headrulewidth}{0pt} % optional: removes header line
 \fancyhead[LE,RO]{\rightmark}
 
-\newcommand{\footerbits}[1]{\scriptsize \input{footer/binary#1}}
-\fancyfoot[LE]{\small\thepage\ \footerbits{\thepage}}
-\fancyfoot[RO]{\footerbits{\thepage}\ \small\thepage}
+% setup for footer bits
+\newcommand{\footerbits}[1]{\scriptsize \input{footer/binary\arabic{BitsCounter}}\stepcounter{BitsCounter}}
 
 % rename index and apply .ist style
 \makeindex[title=Hakemisto,options= -s hakemisto.ist]
@@ -61,11 +60,17 @@
 \makeatother
 
 \begin{document}
+\newcounter{BitsCounter} % init footer bits counter
+\setcounter{BitsCounter}{0}
 \raggedbottom
 \footnotesize
 \pagenumbering{gobble}
 \input{first_pages.tex}
 
+% turn on fancy footers
+\fancyfoot[LE]{\small\thepage\ \footerbits{}}
+\fancyfoot[RO]{\footerbits{}\ \small\thepage}
+% reset page numbering to 0
 \pagenumbering{arabic}
 \setcounter{page}{0}
 \input{laulut.tex}
