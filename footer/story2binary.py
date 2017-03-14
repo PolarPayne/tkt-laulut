@@ -26,8 +26,15 @@ while len(binarystrings):
 		binarystrings = binarystrings[1:]
 		if not len(binarystrings):
 			break
-	name = "binary%d.tex" % j
+			
+	name = "binaryL%d.tex" % j
 	f = open(name, 'w')
-	f.write(applygradient(pagestring, (j % 2) == 0))
+	f.write(applygradient(pagestring, True))
 	f.close()
+
+	name = "binaryR%d.tex" % j
+	f = open(name, 'w')
+	f.write(applygradient(pagestring, False))
+	f.close()
+
 	j += 1

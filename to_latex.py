@@ -129,7 +129,7 @@ def generate_song(data):
 
 
 def category_break():
-    return "\\input{category_break.tex}"
+    return "\\input{category_break.tex}\n\\input{category_page.tex}\n\headerfooteron{}\n"
 
 
 def main(order_file, songs_file):

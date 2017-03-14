@@ -3,22 +3,25 @@
 \usepackage[a6paper, portrait, outer=0.7cm, inner=1.3cm, tmargin=1.7cm, bmargin=1.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[finnish,swedish,english,russian]{babel}
-\usepackage{verse}
-\usepackage{imakeidx}
+\usepackage{verse}    % verse environment
+\usepackage{imakeidx} % makeindex with parameters
 \usepackage{expl3}
-\usepackage{calc} % widthof
+\usepackage{calc}     % widthof
 \usepackage{tabto}
-\usepackage{tikz}
+\usepackage{tikz}     % transparency in \color
 \usepackage{titlesec} 
-\usepackage{amssymb}
+\usepackage{amssymb}  % arrow symbols etc
 \usepackage{fancyhdr} % headers
 \usepackage{etoolbox} % verse raggedright
 \usepackage[official]{eurosym} % euro character
-\usepackage{wasysym} % note character
-\usepackage{graphicx}
+\usepackage{wasysym}  % note character
+\usepackage{graphicx} % includegraphics
+\usepackage{listings} % code listing
+\usepackage{xcolor}    % definecolor
+\usepackage{afterpage}% reset page color
+%\usepackage{inconsolata} % alternate tt font
 
-\usepackage{afterpage}
-
+% command for adding completely blank page
 \newcommand\blankpage{%
     \null
     \thispagestyle{empty}%
@@ -41,19 +44,19 @@
 \fancyhf{}
 \renewcommand{\headrulewidth}{0pt} % optional: removes header line
 
+% setup for footer bits
+\newcommand{\footerbits}[1]{\scriptsize\input{footer/binary#1\arabic{BitsCounter}}\stepcounter{BitsCounter}}
+
 % commands for turning headers on/off
 \newcommand{\headerfooteron}{%
-\fancyfoot[LE]{\small\thepage\ \footerbits{}}%
-\fancyfoot[RO]{\footerbits{}\ \small\thepage}
+\fancyfoot[LE]{\small\thepage\ \footerbits{L}}%
+\fancyfoot[RO]{\footerbits{R}\ \small\thepage}%
 \fancyhead[LE,RO]{\rightmark}}
 
-\newcommand{\headerfooteroff}{%
-\fancyfoot[LE]{{}}%
-\fancyfoot[RO]{{}}%
+\newcommand{\headerfooteroff}{
+\fancyfoot[LE]{}%
+\fancyfoot[RO]{}%
 \fancyhead[LE,RO]{}}
-
-% setup for footer bits
-\newcommand{\footerbits}[1]{\scriptsize \input{footer/binary\arabic{BitsCounter}}\stepcounter{BitsCounter}}
 
 % rename index and apply .ist style
 \makeindex[title=Hakemisto,options= -s hakemisto.ist]
