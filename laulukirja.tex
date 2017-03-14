@@ -50,12 +50,11 @@
 % commands for turning headers on/off
 \newcommand{\headerfooteron}{%
 \fancyfoot[LE]{\small\thepage\ \footerbits{L}}%
-\fancyfoot[RO]{\footerbits{R}\ \small\thepage}%
+\fancyfoot[RO]{\strut\footerbits{R}\ \small\thepage}%
 \fancyhead[LE,RO]{\rightmark}}
 
 \newcommand{\headerfooteroff}{
-\fancyfoot[LE]{}%
-\fancyfoot[RO]{}%
+\fancyfoot[LE,RO]{}%
 \fancyhead[LE,RO]{}}
 
 % rename index and apply .ist style
