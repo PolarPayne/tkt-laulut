@@ -1,0 +1,67 @@
+\headerfooteroff{}
+\pagecolor{black!5}\afterpage{\nopagecolor}
+\lstset{ %
+  basicstyle=\footnotesize\tt,        % the size of the fonts that are used for the code
+  %breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{black!30},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only
+  %frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code
+  keywordstyle=\color{black!60},       % keyword style
+  %language=Octave,                 % the language of the code
+  morekeywords={*,...},           % if you want to add more keywords to the set
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbers=left,
+  xleftmargin=1.5em,
+  framexleftmargin=1em,
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\footnotesize\color{black!60}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{yellow},     % string literal style
+  tabsize=2	                   % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+\begin{lstlisting}[language=C]
+dvec3 sample(dvec3& src, dvec3& dir) {
+  if (d > MAXDEPTH) return dvec3(0,0,0);
+  isect is;
+  trace(src, dir, is);
+  if (is.dist == 1e10) return is.color;
+  // intersection coord
+  dvec3 intersect = dvec3(src + dir * is.dist),        
+        r         = dvec3(dir + is.ref);
+  if (is.mat == DIFFUSE) {
+    dvec3 obj_color = is.color;
+    dvec3 obj_ref   = is.ref;
+    dvec3 c(0,0,0);
+    for (sphere light : lights) {
+      double lx = light.p.x + SOFT_SHADOWS,
+             ly = light.p.y,
+             lz = light.p.z + SOFT_SHADOWS;
+      // direction to light
+      dvec3 lightdir = norm(dvec3(lx, ly, lz));
+      dvec3 lc = obj_color;
+      // lambertian factor
+      double b = dot(lightdir, obj_ref);
+      if (b < 0) continue;
+      lc *= pow(b, 3);
+      // apply light color
+      trace(intersect, lightdir, is);
+      lc *= is.light;
+      c += lc;
+    }
+    return clamp(c, 0.0, 1.0);
+  } else if (is.light != dvec3(0,0,0)) {
+    return is.light;
+  } else if (is.mat == REFLECTIVE) {
+\end{lstlisting}
+\clearpage
+\headerfooteron{}
+\fancyhead[CE]{CATEGORY 7}

@@ -1,0 +1,68 @@
+\headerfooteroff{}
+\pagecolor{black!5}\afterpage{\nopagecolor}
+\lstset{ %
+  basicstyle=\footnotesize\tt,        % the size of the fonts that are used for the code
+  %breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{black!30},    % comment style
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only
+  %frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code
+  keywordstyle=\color{black!60},       % keyword style
+  %language=Octave,                 % the language of the code
+  morekeywords={*,...},           % if you want to add more keywords to the set
+  %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbers=left,
+  xleftmargin=1.5em,
+  framexleftmargin=1em,
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\footnotesize\color{black!60}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{yellow},     % string literal style
+  tabsize=2,                   % sets default tabsize to 2 spaces
+  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {Ä}{{\"A}}1 {Ö}{{\"O}}1
+}
+\begin{lstlisting}[language=TeX]
+%
+% Finlandia
+%
+\sectionmark{1}%
+\noindent\strut\hspace{10pt}%
+\begin{minipage}{\linewidth-10pt}
+\vspace{5pt}
+\hspace{20pt-\widthof{\large\bf 1.%
+\hspace{2pt}}}
+{\large\bf 1.\hspace{2pt}}
+\parbox[t]{0.85\linewidth}{\raggedright%
+{\large\bf Finlandia}\\[6pt]}
+\index{Finlandia@Finlandia}
+\begin{verse}
+  Oi Suomi, katso, sinun päiväs' koittaa,\\
+  yön uhka karkoitettu on jo pois,\\
+  ja aamun kiuru kirkkaudessa soittaa\\
+  kuin itse taivahan kansi sois'.\\
+  Yn vallat aamun valkeus jo voittaa,\\
+  sun päiväs' koittaa, oi synnyinmaa.\\
+\end{verse}
+\end{minipage}\\[10pt]
+\noindent\strut\hspace{10pt}
+\begin{minipage}{\linewidth-10pt}
+\begin{verse}
+  Oi nouse, Suomi, nosta korkealle\\
+  pääs' seppelöimä suurten muistojen,\\
+  oi nouse, Suomi, näytit maailmalle\\
+  sa että karkoitit orjuuden\\
+  ja ettet taipunut sa sorron alle,\\
+  on aamus' alkanut, synnyinmaa.\\
+\end{verse}
+\end{minipage}\\[10pt]
+\end{lstlisting}
+\clearpage
+\headerfooteron{}
+\fancyhead[CE]{\LaTeX}

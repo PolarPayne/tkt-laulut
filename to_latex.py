@@ -132,8 +132,12 @@ def generate_song(data):
     return "\n".join(out)
 
 
-def category_break():
-    return "\\input{category_break.tex}\n\\input{category_page.tex}\n"
+def category_break(i):
+    break_string = ""
+    if i != '1':
+        break_string += "\\input{category/break.tex}\n"
+    break_string += "\\input{category/page%c.tex}\n" % i
+    return break_string
 
 
 def main(order_file, songs_file):
@@ -204,14 +208,13 @@ def main(order_file, songs_file):
             "category": d["category"]
         })
 
-    cur_cat = data[0]["category"]
-    prev_cat = cur_cat
+    category = None
 
     for i in data:
-        prev_cat = cur_cat
-        cur_cat = i["category"]
-        if cur_cat != prev_cat:
-            print(category_break())
+        song_category = i["category"]
+        if not category or (song_category[0] != category[0]):
+            category = song_category
+            print(category_break(song_category[0]))
         print(generate_song(i))
 
 if __name__ == "__main__":
