@@ -58,6 +58,18 @@ def line_hack(line, is_line=True):
         line = "\\hspace{0pt-\\widthof{A: }}" + line
     elif line.startswith("B: "):
         line = "\\hspace{0pt-\\widthof{B: }}" + line
+    elif line.startswith(r"\( \leftrightarrow \)"):
+        line = r"\hspace{0pt-\widthof{\(\leftrightarrow\) }}$\leftrightarrow$"
+        return line
+    elif line.startswith(r"\( \updownarrow \)"):
+        line = r"\hspace{0pt-\widthof{\(\updownarrow\) }}$\updownarrow$"
+        return line
+    elif line.startswith(r"\( \circlearrowleft \)"):
+        line = r"\hspace{0pt-\widthof{\(\circlearrowleft\) }}$\circlearrowleft$"
+        return line
+    elif line.startswith(r"\( \searrow\swarrow \)"):
+        line = r"\hspace{0pt-\widthof{\(\searrow\swarrow\) }}$\searrow\swarrow$"
+        return line
     if line:
         line += "\\\\"
     return line
