@@ -5,7 +5,7 @@
 *.ilg
 *.ind
 *.log
-*.pdf
+/*.pdf
 *.toc
 laulut.tex
 *.csv
