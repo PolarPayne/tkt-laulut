@@ -112,7 +112,7 @@ def generate_song(data):
 
     # add index entry for title and any alternate titles
     for name in [title] + data["alternate_titles"]:
-        if not name in index_blacklist:
+        if not title in index_blacklist:
            out.append("\\index{{{}}}".format(index_hack(name)))
 
     first = True
