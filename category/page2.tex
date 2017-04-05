@@ -24,10 +24,11 @@
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{yellow},     % string literal style
+  stringstyle=\color{black},     % string literal style
   tabsize=2	                   % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
+\vspace*{\fill}
 \begin{lstlisting}[language=Java]
 import java.util.Collections;
 
@@ -35,7 +36,7 @@ public class Main {
 
     public static String jouluKuusi(int h) {
         String k= "";
-        for (int i = 1; i < 2 * h; i = i+2) {
+        for (int i = 1; i < 2*h; i = i+2) {
             k += String.join("", Collections.nCopies((2*h-i)/2, " "));
             k += String.join("", Collections.nCopies(i, "*")) + "\n";
         }
@@ -50,6 +51,7 @@ public class Main {
         System.out.println(jouluKuusi(10));
     }
 }\end{lstlisting}
+\vspace*{\fill}
 \clearpage
 \headerfooteron{}
 \fancyhead[CE]{Java}

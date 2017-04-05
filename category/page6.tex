@@ -24,23 +24,28 @@
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{yellow},     % string literal style
+  stringstyle=\color{black},     % string literal style
   tabsize=2	                   % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
+\vspace*{\fill}
 \begin{lstlisting}[language=Fortran]
 program FizzBuzz
 implicit none
 integer :: i = 1
  
 do i = 1, 100
-    if (Mod(i,3) == 0)write(*,"(A)",advance='no')  "Fizz"
-    if (Mod(i,5) == 0)write(*,"(A)",advance='no') "Buzz"
-    if (Mod(i,3) /= 0 .and. Mod(i,5) /=0 )write(*,"(I3)",advance='no') i
+    if (Mod(i,3) == 0)
+        write(*,"(A)",advance='no') "Fizz"
+    if (Mod(i,5) == 0)
+        write(*,"(A)",advance='no') "Buzz"
+    if (Mod(i,3) /= 0 .and. Mod(i,5) /=0 )
+        write(*,"(I3)",advance='no') i
     print *, ""
 end do
 end program FizzBuzz
 \end{lstlisting}
+\vspace*{\fill}
 \clearpage
 \headerfooteron{}
 \fancyhead[CE]{Fortran}
