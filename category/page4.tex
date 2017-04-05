@@ -25,44 +25,41 @@
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
   stringstyle=\color{yellow},     % string literal style
-  tabsize=2,                   % sets default tabsize to 2 spaces
-  literate={ä}{{\"a}}1 {ö}{{\"o}}1 {Ä}{{\"A}}1 {Ö}{{\"O}}1
+  tabsize=2	                   % sets default tabsize to 2 spaces
+  %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
-\begin{lstlisting}[language=TeX]
-%
-% Finlandia
-%
-\sectionmark{1}%
-\noindent\strut\hspace{10pt}%
-\begin{minipage}{\linewidth-10pt}
-\vspace{5pt}
-\hspace{20pt-\widthof{\large\bf 1.%
-\hspace{2pt}}}
-{\large\bf 1.\hspace{2pt}}
-\parbox[t]{0.85\linewidth}{\raggedright%
-{\large\bf Finlandia}\\[6pt]}
-\index{Finlandia@Finlandia}
-\begin{verse}
-  Oi Suomi, katso, sinun päiväs' koittaa,\\
-  yön uhka karkoitettu on jo pois,\\
-  ja aamun kiuru kirkkaudessa soittaa\\
-  kuin itse taivahan kansi sois'.\\
-  Yn vallat aamun valkeus jo voittaa,\\
-  sun päiväs' koittaa, oi synnyinmaa.\\
-\end{verse}
-\end{minipage}\\[10pt]
-\noindent\strut\hspace{10pt}
-\begin{minipage}{\linewidth-10pt}
-\begin{verse}
-  Oi nouse, Suomi, nosta korkealle\\
-  pääs' seppelöimä suurten muistojen,\\
-  oi nouse, Suomi, näytit maailmalle\\
-  sa että karkoitit orjuuden\\
-  ja ettet taipunut sa sorron alle,\\
-  on aamus' alkanut, synnyinmaa.\\
-\end{verse}
-\end{minipage}\\[10pt]
+\begin{lstlisting}[language=C]
+#include <stdio.h>
+#include <vector>
+#include <string>
+
+struct DankCharacter
+{
+	int character;
+};
+
+int main()
+{
+	std::vector<DankCharacter*> charContainer;
+	int magicalOffsets[48] = { 1, 17, 9, 17, 5, 32, 19, 2, 1, 1, 13, 32, 19, 21, 9, 17, 32, 12, 2, 8, 32, 8, 3, 32, 1, 17, 9, 17, 5, 32, 19, 2, 1, 1, 13, 32, 24, 17, 7, 32, 12, 2, 8, 32, 16, 2, 10, 1 };
+	for (int ch : magicalOffsets)
+	{
+		auto pCharacter = new DankCharacter;
+		ch = ch == 32 ? 0x20 : ((ch + (25 - 13)) % 25) + 0x61;
+		__asm__(
+			"mov %%ecx, dword ptr[%1]\n"
+			"mov dword ptr[%0], %%ecx\n"
+			:
+		: "r"(pCharacter), "r"(&ch));
+		charContainer.push_back(pCharacter);
+	}
+
+	for (int i = 0; i < charContainer.size(); ++i)
+		printf(i == (charContainer.size() - 1) ? "%c\n" : "%c", (char)charContainer[i]->character);
+	for (int i = 0; i < charContainer.size(); i++) delete charContainer[i];
+	return 0;
+}
 \end{lstlisting}
 \clearpage
 \headerfooteron{}
-\fancyhead[CE]{\LaTeX}
+\fancyhead[CE]{C++}
