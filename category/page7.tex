@@ -10,7 +10,7 @@
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only
   %frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code
-  keywordstyle=\color{black!60},       % keyword style
+  keywordstyle=\color{black},       % keyword style
   %language=Octave,                 % the language of the code
   morekeywords={*,...},           % if you want to add more keywords to the set
   %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
@@ -24,44 +24,41 @@
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{yellow},     % string literal style
+  stringstyle=\color{black!60},     % string literal style
   tabsize=2	                   % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
-\begin{lstlisting}[language=C]
-dvec3 sample(dvec3& src, dvec3& dir) {
-  if (d > MAXDEPTH) return dvec3(0,0,0);
-  isect is;
-  trace(src, dir, is);
-  if (is.dist == 1e10) return is.color;
-  // intersection coord
-  dvec3 intersect = dvec3(src + dir * is.dist),        
-        r         = dvec3(dir + is.ref);
-  if (is.mat == DIFFUSE) {
-    dvec3 obj_color = is.color;
-    dvec3 obj_ref   = is.ref;
-    dvec3 c(0,0,0);
-    for (sphere light : lights) {
-      double lx = light.p.x + SOFT_SHADOWS,
-             ly = light.p.y,
-             lz = light.p.z + SOFT_SHADOWS;
-      // direction to light
-      dvec3 lightdir = norm(dvec3(lx, ly, lz));
-      dvec3 lc = obj_color;
-      // lambertian factor
-      double b = dot(lightdir, obj_ref);
-      if (b < 0) continue;
-      lc *= pow(b, 3);
-      // apply light color
-      trace(intersect, lightdir, is);
-      lc *= is.light;
-      c += lc;
-    }
-    return clamp(c, 0.0, 1.0);
-  } else if (is.light != dvec3(0,0,0)) {
-    return is.light;
-  } else if (is.mat == REFLECTIVE) {
+\vspace*{\fill}
+\index{love.sh@love.sh}
+\begin{lstlisting}[language=csh]
+#!/bin/sh
+w="What is love?\n"
+b="Baby, don't hurt me\n"
+d="Don't hurt me no more\n"
+A="$w$b$d"
+y="Yeah, yeah\n"
+printf "$A\n$b$d\n$w$y\n"
+echo "I don't know why you're not there
+I give you my love, but you don't care
+So what is right?
+And what is wrong?
+Gimme a sign"
+printf "\n$A\n$A\n"
+echo "Oh, I don't know, what can I do?
+What else can I say, it's up to you
+I know we're one
+Just me and you
+I can't go on"
+printf "\n$A\n$A\n$w\n$w\n$A\n$d$d\n"
+echo "I want no other, no other lover
+This is our life, our time
+When we are together, I need you forever
+Is it love?"
+printf "$A\n$A\n"
+echo "Yeah"
+printf "$A\n$A\n$b$d\n$b$d$w"
 \end{lstlisting}
+\vspace*{\fill}
 \clearpage
 \headerfooteron{}
-\fancyhead[CE]{CATEGORY 7}
+\fancyhead[CE]{/bin/sh}
