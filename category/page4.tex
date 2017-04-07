@@ -1,5 +1,5 @@
-\headerfooteroff{}
-\pagecolor{black!5}\afterpage{\nopagecolor}
+\headerfooteroff{}%
+\pagecolor{black!5}\afterpage{\nopagecolor}%
 \lstset{ %
   basicstyle=\footnotesize\tt,        % the size of the fonts that are used for the code
   %breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
@@ -8,7 +8,7 @@
   commentstyle=\color{black!30},    % comment style
   escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only
-  %frame=single,	                   % adds a frame around the code
+  %frame=single,                     % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code
   keywordstyle=\color{black!60},       % keyword style
   %language=Octave,                 % the language of the code
@@ -24,42 +24,48 @@
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{green},     % string literal style
-  tabsize=2	                   % sets default tabsize to 2 spaces
+  stringstyle=\color{black!60},     % string literal style
+  tabsize=2                    % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
-}
-\begin{lstlisting}[language=C]
+}%
+\vspace{-5mm}\strut%
+\hspace{-4mm}\begin{minipage}[]{\textwidth}
+\begin{lstlisting}[language=C++]
 #include <stdio.h>
 #include <vector>
 #include <string>
 
-struct DankCharacter
-{
-	int character;
+struct DankChar {
+  int char;
 };
 
-int main()
-{
-	std::vector<DankCharacter*> charContainer;
-	int magicalOffsets[48] = { 1, 17, 9, 17, 5, 32, 19, 2, 1, 1, 13, 32, 19, 21, 9, 17, 32, 12, 2, 8, 32, 8, 3, 32, 1, 17, 9, 17, 5, 32, 19, 2, 1, 1, 13, 32, 24, 17, 7, 32, 12, 2, 8, 32, 16, 2, 10, 1 };
-	for (int ch : magicalOffsets)
-	{
-		auto pCharacter = new DankCharacter;
-		ch = ch == 32 ? 0x20 : ((ch + (25 - 13)) % 25) + 0x61;
-		__asm__(
-			"mov %%ecx, dword ptr[%1]\n"
-			"mov dword ptr[%0], %%ecx\n"
-			:
-		: "r"(pCharacter), "r"(&ch));
-		charContainer.push_back(pCharacter);
-	}
+int main() {
+  std::vector<DankChar*> chars;
+  int magicOffsets[48] = {1, 17, 9, 17, 5,
+    32, 19, 2, 1, 1, 13, 32, 19, 21, 9, 17,
+    32, 12, 2, 8, 32, 8, 3, 32, 1, 17, 9,
+    17, 5, 32, 19, 2, 1, 1, 13, 32, 24, 17,
+    7, 32, 12, 2, 8, 32, 16, 2, 10, 1 };
 
-	for (int i = 0; i < charContainer.size(); ++i)
-		printf(i == (charContainer.size() - 1) ? "%c\n" : "%c", (char)charContainer[i]->character);
-	for (int i = 0; i < charContainer.size(); i++) delete charContainer[i];
-	return 0;}
+  for (int ch : magicOffsets) {
+    auto pChar = new DankChar;
+    ch = ch == 32 ? 0x20 : 
+      ((ch+(25-13))%25)+0x61;
+    __asm__("mov %%ecx, dword ptr[%1]\n"
+            "mov dword ptr[%0], %%ecx\n"
+            : : "r"(pChar), "r"(&ch));
+    chars.push_back(pChar);
+  }
 
-\end{lstlisting}
+  for (int i = 0; i < chars.size(); ++i)
+    printf(i == (chars.size() - 1) ? 
+      "%c\n" : "%c", (char)chars[i]->char);
+
+  for (int i = 0; i < chars.size(); i++) 
+    delete chars[i];
+}
+\end{lstlisting}%
+\end{minipage}
 \clearpage
 \headerfooteron{}
 \fancyhead[CE]{C++}
