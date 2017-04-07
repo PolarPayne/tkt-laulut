@@ -4,6 +4,8 @@ chars_per_page = 7
 
 lines = [line for line in open("story.txt", 'r')]
 text = " ".join(lines)
+text = text.replace("\n", " ")
+text = text.replace("  ", " ")
 
 binarystrings = ["{0:0>7}".format(int(str(bin(ord(char)))[2:] )) for char in text]
 
@@ -23,6 +25,7 @@ while len(binarystrings):
 	pagestring = ""
 	for i in range(chars_per_page):
 		pagestring += binarystrings[0]
+		#pagestring += chr(int(binarystrings[0], 2))
 		binarystrings = binarystrings[1:]
 		if not len(binarystrings):
 			break
