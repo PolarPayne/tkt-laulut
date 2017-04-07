@@ -33,14 +33,17 @@
 program FizzBuzz
 implicit none
 integer :: i = 1
- 
+
 do i = 1, 100
-    if (Mod(i,3) == 0)
+    if (Mod(i,3) == 0) then
         write(*,"(A)",advance='no') "Fizz"
-    if (Mod(i,5) == 0)
+    end if
+    if (Mod(i,5) == 0) then
         write(*,"(A)",advance='no') "Buzz"
-    if (Mod(i,3) /= 0 .and. Mod(i,5) /=0 )
+    end if
+    if (Mod(i,3) /= 0 .and. Mod(i,5) /=0 ) then
         write(*,"(I3)",advance='no') i
+    end if
     print *, ""
 end do
 end program FizzBuzz
