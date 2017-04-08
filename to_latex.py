@@ -51,6 +51,7 @@ def line_hack(line, is_line=True):
     line = line.replace("___", "\\underline{\hspace{6mm}}")
     line = line.replace("__", "\\underline{\hspace{4mm}}")
     line = line.replace("_", "\\_")
+    line = re.sub(r'\[?x(\d)\]?',r'$[\\times{}\1]$',line)
 
     if not is_line:
         return line
