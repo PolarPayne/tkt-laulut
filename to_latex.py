@@ -32,7 +32,6 @@ def line_hack(line, is_line=True):
         return line
     line = line.replace("#", "\\#")
     line = line.replace("%", "\\%")
-    line = line.replace("_", "\\_")
     line = line.replace("&", "\\&")
     line = line.replace("|", "\\|")
     line = line.replace("@", "\\@")
@@ -46,6 +45,12 @@ def line_hack(line, is_line=True):
     line = line.replace("...", " \dots{} ")
     line = line.replace("\"", "''")
     line = line.replace("~", "\\textasciitilde{}")
+    line = line.replace("______", "\\underline{\hspace{12mm}}")
+    line = line.replace("_____", "\\underline{\hspace{10mm}}")
+    line = line.replace("____", "\\underline{\hspace{8mm}}")
+    line = line.replace("___", "\\underline{\hspace{6mm}}")
+    line = line.replace("__", "\\underline{\hspace{4mm}}")
+    line = line.replace("_", "\\_")
 
     if not is_line:
         return line
