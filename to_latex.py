@@ -44,6 +44,8 @@ def line_hack(line, is_line=True):
     line = line.replace(";.;", ":,:")
     line = line.replace(":;:", ":,:")
     line = line.replace("...", " \dots{} ")
+    line = line.replace("\"", "''")
+    line = line.replace("~", "\\textasciitilde{}")
 
     if not is_line:
         return line
