@@ -24,13 +24,30 @@
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{yellow},     % string literal style
+  stringstyle=\color{gray},     % string literal style
   tabsize=2	                   % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
-\begin{lstlisting}[language=C]
-TODO TODO TODO
+\begin{lstlisting}[language={[x86masm]Assembler}]
+section     .text
+global      _start
+
+_start:
+
+    mov     edx,len
+    mov     ecx,msg
+    mov     ebx,1
+    mov     eax,4
+    int     0x80
+
+    mov     eax,1
+    int     0x80
+
+section     .data
+
+msg     db  'Hello, world!',0xa
+len     equ $ - msg
 \end{lstlisting}
 \clearpage
 \headerfooteron{}
-\fancyhead[CE]{CATEGORY n}
+\fancyhead[CE]{Assembly}
