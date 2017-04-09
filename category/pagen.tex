@@ -10,7 +10,7 @@
   extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only
   %frame=single,	                   % adds a frame around the code
   keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code
-  keywordstyle=\color{black!60},       % keyword style
+  keywordstyle=\color{black},       % keyword style
   %language=Octave,                 % the language of the code
   morekeywords={*,...},           % if you want to add more keywords to the set
   %numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
@@ -24,10 +24,11 @@
   showstringspaces=false,          % underline spaces within strings only
   showtabs=false,                  % show tabs within strings adding particular underscores
   stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
-  stringstyle=\color{gray},     % string literal style
+  stringstyle=\color{black!60},     % string literal style
   tabsize=2	                   % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
+\vspace*{\fill}
 \begin{lstlisting}[language={[x86masm]Assembler}]
 section     .text
 global      _start
@@ -48,6 +49,7 @@ section     .data
 msg     db  'Hello, world!',0xa
 len     equ $ - msg
 \end{lstlisting}
+\vspace*{\fill}
 \clearpage
 \headerfooteron{}
 \fancyhead[CE]{Assembly}
