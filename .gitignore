@@ -11,3 +11,7 @@ laulut.tex
 *.csv
 .vscode/
 footer/binary*
+
+laulukirja\.synctex\.gz
+
+*.gz
