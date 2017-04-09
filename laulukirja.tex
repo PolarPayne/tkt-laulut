@@ -62,6 +62,15 @@
 \fancyhead[LE,RO,CE,CO]{}%
 \renewcommand{\headrulewidth}{0pt}}
 
+\newcommand{\dlcpage}{
+  \headerfooteroff{}
+  \vspace*{\fill}
+  \hspace*{\fill}\includegraphics[width=0.8\linewidth]{graphics/DLC.pdf}\hspace*{\fill}
+  \vspace*{\fill}
+  \pagebreak
+  \headerfooteron{}
+}
+
 % rename index and apply .ist style
 \makeindex[title=Hakemisto,options= -s hakemisto.ist]
 
