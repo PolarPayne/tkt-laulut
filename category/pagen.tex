@@ -29,38 +29,7 @@
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
 \begin{lstlisting}[language=C]
-dvec3 sample(dvec3& src, dvec3& dir) {
-  if (d > MAXDEPTH) return dvec3(0,0,0);
-  isect is;
-  trace(src, dir, is);
-  if (is.dist == 1e10) return is.color;
-  // intersection coord
-  dvec3 intersect = dvec3(src + dir * is.dist),        
-        r         = dvec3(dir + is.ref);
-  if (is.mat == DIFFUSE) {
-    dvec3 obj_color = is.color;
-    dvec3 obj_ref   = is.ref;
-    dvec3 c(0,0,0);
-    for (sphere light : lights) {
-      double lx = light.p.x + SOFT_SHADOWS,
-             ly = light.p.y,
-             lz = light.p.z + SOFT_SHADOWS;
-      // direction to light
-      dvec3 lightdir = norm(dvec3(lx, ly, lz));
-      dvec3 lc = obj_color;
-      // lambertian factor
-      double b = dot(lightdir, obj_ref);
-      if (b < 0) continue;
-      lc *= pow(b, 3);
-      // apply light color
-      trace(intersect, lightdir, is);
-      lc *= is.light;
-      c += lc;
-    }
-    return clamp(c, 0.0, 1.0);
-  } else if (is.light != dvec3(0,0,0)) {
-    return is.light;
-  } else if (is.mat == REFLECTIVE) {
+TODO TODO TODO
 \end{lstlisting}
 \clearpage
 \headerfooteron{}
