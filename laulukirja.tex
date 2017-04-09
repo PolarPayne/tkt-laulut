@@ -28,7 +28,6 @@
 \newcommand\blankpage{%
     \null
     \thispagestyle{empty}%
-    \addtocounter{page}{-1}%
     \newpage}
 
 % fix index indent on linewrap
@@ -97,6 +96,9 @@
 % remove headers and footers for index
 \headerfooteroff{}
 \pagenumbering{gobble}
+\addtocounter{page}{-1}
+\ifodd\value{page}\null\newpage\fi
+
 \printindex
 
 \pagebreak
