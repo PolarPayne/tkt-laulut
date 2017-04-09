@@ -25,6 +25,10 @@ def index_hack(name):
     prefix = re.sub("[öÖ]", "zzc", prefix, re.U)
     return prefix + "@" + name
 
+def melody_hack(s):
+    s = s.replace("säv. ", r"säv.\ ")
+    s = s.replace("san. ", r"san.\ ")
+    return s
 
 def line_hack(line, is_line=True):
     """Replace problematic characters with latex commands."""
@@ -34,7 +38,7 @@ def line_hack(line, is_line=True):
     line = line.replace("%", "\\%")
     line = line.replace("&", "\\&")
     line = line.replace("|", "\\|")
-    line = line.replace("@", "\\@")
+    #line = line.replace("@", "\\@")
     line = line.replace("$", "\\$")
     line = line.replace("€", "\\euro{}")
     line = line.replace("+", "\\texttt{+}")
@@ -44,7 +48,7 @@ def line_hack(line, is_line=True):
     line = line.replace(":;:", ":,:")
     line = line.replace("...", " \dots{} ")
     line = line.replace("\"", "''")
-    line = line.replace("~", "\\textasciitilde{}")
+    #line = line.replace("~", "\\textasciitilde{}")
     line = line.replace("______", "\\underline{\hspace{12mm}}")
     line = line.replace("_____", "\\underline{\hspace{10mm}}")
     line = line.replace("____", "\\underline{\hspace{8mm}}")
@@ -114,7 +118,7 @@ def generate_song(data):
     # song title in parbox for line wrapping
     t = "\\parbox[t]{{0.85\\linewidth}}{{\\raggedright {{\\large\\bf {}}}".format(title)
     if melody is not None:
-        t += "\\\\[2pt]\\small\\emph{{{0}}}\\{1}}}".format(melody, SONGTITLE_POST_SKIP)
+        t += "\\\\[2pt]\\small\\emph{{{0}}}\\{1}}}".format(melody_hack(melody), SONGTITLE_POST_SKIP)
     else:
         t += "\\{0}}}".format(SONGTITLE_POST_SKIP) # close \leftline\parbox
     out.append(t)
