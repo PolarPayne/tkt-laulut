@@ -28,39 +28,24 @@
   tabsize=2	                   % sets default tabsize to 2 spaces
   %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
 }
-\vspace*{\fill}
-\begin{lstlisting}[language=Java]
 import java.util.Collections;
 
 public class Main {
 
-  public static String jouluKuusi(int h) {
-    String k= "";
-
-    for (int i = 1; i < 2 * h; i = i + 2) {
-      k += String.join("", 
-            Collections.nCopies(
-              (2*h-i)/2, " "));
-
-      k += String.join("", 
-            Collections.nCopies(
-              i, "*")) + "\n";
+    public static String jouluKuusi(int h) {
+        String k= "";
+        for (int i = 1; i < 2 * h; i = i+2) {
+            k += String.join("", Collections.nCopies((2*h-i)/2, " "));
+            k += String.join("", Collections.nCopies(i, "*")) + "\n";
+        }
+        String v = String.join("", Collections.nCopies((2*h-3)/2," "));
+        k += v + "*** \n" + v + "*** \n" + v + "*** \n";
+        return k;
     }
 
-    for (int i = 0; i < 3; i++) {
-      k += String.join("", 
-            Collections.nCopies(
-              (2*h-3)/2," "));
-              
-      k += "*** \n";
+    public static void main(String[] args) {
+        System.out.println(jouluKuusi(10));
     }
-
-    return k;
-  }
-
-  public static void main(String[] args) {
-    System.out.println(jouluKuusi(10));
-  }
 }
 \end{lstlisting}
 \vspace*{\fill}
