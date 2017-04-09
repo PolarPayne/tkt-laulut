@@ -1,4 +1,9 @@
 # tkt-laulut
+**This project is now complete, the final PDF is a little bit
+different, since some small changes were required to be done
+by hand.** If you see this repo useful for you, please do
+use it.
+
 Laulattaako? No hätä, käpistelijät auttavat.
 
 * Step 0: Install python >=3.4 and texlive-full
