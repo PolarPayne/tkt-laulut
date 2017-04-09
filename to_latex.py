@@ -212,6 +212,7 @@ def main(order_file, songs_file):
     for i, d in order.items():
         if i not in lyrics:
             print("\"{}\" doesn't have lyrics.".format(i), file=stderr)
+            exit(1)
             continue
 
         if d["number"] is None:
